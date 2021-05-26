@@ -1,6 +1,6 @@
 FROM openjdk:8-jre-alpine
 
-MAINTAINER coolbeevip@gmail.com
+MAINTAINER zhanglei@apache.org
 
 ARG SKYWALKING_VERSION=8.1.0
 ARG SKYWALKING_BIN=apache-skywalking-apm-${SKYWALKING_VERSION}.tar.gz
