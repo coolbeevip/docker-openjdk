@@ -22,7 +22,6 @@
 * -XX:+ExplicitGCInvokesConcurrent
 * -XX:+CMSParallelRemarkEnabled
 * -XX:SurvivorRatio=8 -XX:+UseCompressedOops
-* SW_AGENT_ENABLED
 
 ## TOOLS
 
