@@ -1,21 +1,30 @@
-# openjdk
+# OPENJDK
 
-# ENV
+## BASE
 
-* JAVA_HEAP_SIZE_OPTS
+* openjdk:8-jre-alpine
 
--Xms256m -Xmx1g -Xss256k -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=512m
+## SYSTEM
 
-* JAVA_GC_OPTS
+* en_US.UTF-8
+* Asia/Shanghai
 
--XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:MaxTenuringThreshold=15 -XX:+ExplicitGCInvokesConcurrent -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:+UseCompressedOops
+## DEFAULT JVM
 
+* -Xms256m
+* -Xmx1g
+* -Xss256k
+* -XX:MetaspaceSize=128m
+* -XX:MaxMetaspaceSize=512m
+* -XX:+UseConcMarkSweepGC
+* -XX:+UseParNewGC
+* -XX:MaxTenuringThreshold=15
+* -XX:+ExplicitGCInvokesConcurrent
+* -XX:+CMSParallelRemarkEnabled
+* -XX:SurvivorRatio=8 -XX:+UseCompressedOops
 * SW_AGENT_ENABLED
 
-Skywalking Agent 8.1.0，默认不启用，可以启动时使用 -e SW_AGENT_ENABLED=true 启用
-
-
-## System
+## TOOLS
 
 * bash
 * tzdata
@@ -29,10 +38,8 @@ Skywalking Agent 8.1.0，默认不启用，可以启动时使用 -e SW_AGENT_ENA
 * glibc
 * jattach
 
-* 字符集
+# ENVIRONMENT
 
-en_US.UTF-8
+* SW_AGENT_ENABLED=false
 
-* 时区
-
-Asia/Shanghai
+  Use `-javaagent:/skywalking/agent/skywalking-agent.jar` when SW_AGENT_ENABLED = true

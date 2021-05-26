@@ -11,8 +11,7 @@ ENV LANG='en_US.UTF-8' \
     SKYWALKING_HOME=/skywalking \
     SKYWALKING_AGENT=/skywalking/agent/skywalking-agent.jar \
     SW_AGENT_NAME=YourAppName \
-    JAVA_HEAP_SIZE_OPTS="-Xms256m -Xmx1g -Xss256k -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=512m" \
-    JAVA_GC_OPTS="-XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:MaxTenuringThreshold=15 -XX:+ExplicitGCInvokesConcurrent -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:+UseCompressedOops"
+    JAVA_TOOL_OPTIONS="-Xms256m -Xmx1g -Xss256k -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=512m -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:MaxTenuringThreshold=15 -XX:+ExplicitGCInvokesConcurrent -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:+UseCompressedOops"
 
 RUN set -x && \
     sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
