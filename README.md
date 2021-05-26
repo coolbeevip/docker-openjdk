@@ -1,22 +1,33 @@
-# 基础镜像
+# openjdk
 
-* Base Image openjdk:8-jre-alpine
+# ENV
 
-* JAVA_OPTS
+* JAVA_HEAP_SIZE_OPTS
 
-```
-JAVA_OPTS="-Xms512m -Xmx1g -Xss256k -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=512m -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:MaxTenuringThreshold=15 -XX:+ExplicitGCInvokesConcurrent -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:+UseCompressedOops"
-```
+-Xms256m -Xmx1g -Xss256k -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=512m
 
-可以启动镜像时使用 -e JAVA_OPTS=xxx 覆盖
+* JAVA_GC_OPTS
 
-* Skywalking Agent 8.1.0
+-XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:MaxTenuringThreshold=15 -XX:+ExplicitGCInvokesConcurrent -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=8 -XX:+UseCompressedOops
 
-默认不启用，可以启动时使用 -e SW_AGENT_ENABLED=true 启用
+* SW_AGENT_ENABLED
 
-* Linux Tools
+Skywalking Agent 8.1.0，默认不启用，可以启动时使用 -e SW_AGENT_ENABLED=true 启用
 
-bash tzdata openssh su-exec unzip libzmq ttf-dejavu curl shadow glibc jattach
+
+## System
+
+* bash
+* tzdata
+* openssh
+* su-exec
+* unzip
+* libzmq
+* ttf-dejavu
+* curl
+* shadow
+* glibc
+* jattach
 
 * 字符集
 
