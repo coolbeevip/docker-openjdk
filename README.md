@@ -21,7 +21,8 @@
 * -XX:MaxTenuringThreshold=15
 * -XX:+ExplicitGCInvokesConcurrent
 * -XX:+CMSParallelRemarkEnabled
-* -XX:SurvivorRatio=8 -XX:+UseCompressedOops
+* -XX:SurvivorRatio=8
+* -XX:+UseCompressedOops
 
 ## TOOLS
 
