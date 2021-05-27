@@ -2,6 +2,10 @@ FROM openjdk:8-jre-alpine
 
 MAINTAINER zhanglei@apache.org
 
+RUN addgroup -S ncgroup && adduser -S ncuser -G ncgroup
+
+USER ncuser
+
 ARG SKYWALKING_VERSION=8.1.0
 ARG SKYWALKING_BIN=apache-skywalking-apm-${SKYWALKING_VERSION}.tar.gz
 ARG DOWNLOAD_URL=https://archive.apache.org/dist/skywalking/${SKYWALKING_VERSION}/apache-skywalking-apm-${SKYWALKING_VERSION}.tar.gz
