@@ -41,8 +41,7 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh \
   && rm -rf ${SKYWALKING_HOME}/apache-skywalking-apm-bin \
   && rm -rf ${SKYWALKING_HOME}/${SKYWALKING_BIN}
 
-RUN addgroup -S ${GROUP} && adduser -u ${UID} -S ${USER} -G ${GROUP}
-
-USER ${USER}
+#RUN addgroup -g ${GID} -S ${GROUP} && adduser -u ${UID} -S ${USER} -G ${GROUP}
+#USER ${USER}
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
