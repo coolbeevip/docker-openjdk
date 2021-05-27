@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 8-jre-alpine
+   workflow_dispatch:
 
 jobs:
   build:
