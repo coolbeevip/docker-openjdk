@@ -6,6 +6,11 @@ ARG SKYWALKING_VERSION=8.1.0
 ARG SKYWALKING_BIN=apache-skywalking-apm-${SKYWALKING_VERSION}.tar.gz
 ARG DOWNLOAD_URL=https://archive.apache.org/dist/skywalking/${SKYWALKING_VERSION}/apache-skywalking-apm-${SKYWALKING_VERSION}.tar.gz
 
+ENV USER=ncuser
+ENV GROUP=ncgroup
+ENV UID=12000
+ENV GID=12000
+
 ENV LANG='en_US.UTF-8' \
     LC_ALL='en_US.UTF-8' \
     SKYWALKING_HOME=/skywalking \
@@ -36,9 +41,8 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh \
   && rm -rf ${SKYWALKING_HOME}/apache-skywalking-apm-bin \
   && rm -rf ${SKYWALKING_HOME}/${SKYWALKING_BIN}
 
-RUN groupadd -g 1314 ncgroup && useradd -u 1314 -g ncgroup
-#RUN addgroup -S ncgroup && adduser -S ncuser -G ncgroup
+RUN addgroup -S ${GROUP} && adduser -S ${USER} -G ${GROUP}
 
-USER ncuser
+#USER ncuser
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
