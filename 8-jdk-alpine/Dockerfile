@@ -2,10 +2,6 @@ FROM openjdk:8-jdk-alpine
 
 MAINTAINER zhanglei@apache.org
 
-RUN addgroup -S ncgroup && adduser -S ncuser -G ncgroup
-
-USER ncuser
-
 ARG SKYWALKING_VERSION=8.1.0
 ARG SKYWALKING_BIN=apache-skywalking-apm-${SKYWALKING_VERSION}.tar.gz
 ARG DOWNLOAD_URL=https://archive.apache.org/dist/skywalking/${SKYWALKING_VERSION}/apache-skywalking-apm-${SKYWALKING_VERSION}.tar.gz
@@ -63,5 +59,9 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh \
   && mv ${SKYWALKING_HOME}/apache-skywalking-apm-bin/agent /skywalking \
   && rm -rf ${SKYWALKING_HOME}/apache-skywalking-apm-bin \
   && rm -rf ${SKYWALKING_HOME}/${SKYWALKING_BIN}
+
+RUN addgroup -S ncgroup && adduser -S ncuser -G ncgroup
+
+USER ncuser
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
