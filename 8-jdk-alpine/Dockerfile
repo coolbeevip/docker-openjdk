@@ -36,7 +36,8 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh \
   && rm -rf ${SKYWALKING_HOME}/apache-skywalking-apm-bin \
   && rm -rf ${SKYWALKING_HOME}/${SKYWALKING_BIN}
 
-RUN addgroup -S ncgroup && adduser -S ncuser -G ncgroup
+RUN groupadd -g 1314 ncgroup && useradd -u 1314 -g ncgroup
+#RUN addgroup -S ncgroup && adduser -S ncuser -G ncgroup
 
 USER ncuser
 
