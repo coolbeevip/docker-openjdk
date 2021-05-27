@@ -16,13 +16,27 @@
 * -Xss256k
 * -XX:MetaspaceSize=128m
 * -XX:MaxMetaspaceSize=512m
+
+* -Xnoclassgc  
 * -XX:+UseConcMarkSweepGC
 * -XX:+UseParNewGC
+* -XX:ParallelGCThreads=12
 * -XX:MaxTenuringThreshold=15
 * -XX:+ExplicitGCInvokesConcurrent
 * -XX:+CMSParallelRemarkEnabled
 * -XX:SurvivorRatio=8
-* -XX:+UseCompressedOops
+* -XX:CMSInitiatingOccupancyFraction=65
+* -XX:+UseCMSInitiatingOccupancyOnly
+* -XX:+UseCMSCompactAtFullCollection  
+* -XX:+CMSClassUnloadingEnabled
+
+* -XX:+PrintGCDetails
+* -XX:+UseGCLogFileRotation
+* -XX:NumberOfGCLogFiles=10
+* -XX:GCLogFileSize=1024k
+* -XX:+PrintGCDateStamps
+* -XX:+PrintGCTimeStamps
+* -Xloggc:logs/gc-$(date +%s).vgc
 
 ## TOOLS
 
