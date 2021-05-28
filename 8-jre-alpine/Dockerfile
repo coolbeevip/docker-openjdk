@@ -41,6 +41,6 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh \
   && rm -rf ${SKYWALKING_HOME}/apache-skywalking-apm-bin \
   && rm -rf ${SKYWALKING_HOME}/${SKYWALKING_BIN}
 
-RUN addgroup -g ${WORKGID} -S ${WORKGROUP} && adduser -u ${WORKUID} -S ${WORKUSER} -G ${WORKGROUP} && chmod 777 /var/log/nc
+RUN addgroup -g ${WORKGID} -S ${WORKGROUP} && adduser -u ${WORKUID} -S ${WORKUSER} -G ${WORKGROUP} && mkdir -p /var/log/nc && chmod 777 /var/log/nc
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
