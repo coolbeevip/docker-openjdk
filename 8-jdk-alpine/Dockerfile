@@ -30,7 +30,8 @@ RUN set -x && \
     apk add glibc-2.29-r0.apk && \
     rm -rf /var/cache/apk/* && \
     rm /etc/apk/keys/sgerrand.rsa.pub && \
-    rm glibc-2.29-r0.apk
+    rm glibc-2.29-r0.apk && \
+    mkdir -p /var/log/nc
 
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh \
   && ln -s /usr/local/bin/docker-entrypoint.sh \
@@ -41,6 +42,8 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh \
   && rm -rf ${SKYWALKING_HOME}/apache-skywalking-apm-bin \
   && rm -rf ${SKYWALKING_HOME}/${SKYWALKING_BIN}
 
-RUN addgroup -g ${WORKGID} -S ${WORKGROUP} && adduser -u ${WORKUID} -S ${WORKUSER} -G ${WORKGROUP} && mkdir -p /var/log/nc && chmod 777 /var/log/nc
+RUN addgroup -g ${WORKGID} -S ${WORKGROUP} && adduser -u ${WORKUID} -S ${WORKUSER} -G ${WORKGROUP} && \
+  chown -R ${WORKUSER}:${WORKGROUP} /var/log/nc && \
+  chown -R ${WORKUSER}:${WORKGROUP} /skywalking
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
