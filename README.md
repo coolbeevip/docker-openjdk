@@ -27,7 +27,6 @@
 * -XX:SurvivorRatio=8
 * -XX:CMSInitiatingOccupancyFraction=65
 * -XX:+UseCMSInitiatingOccupancyOnly
-* -XX:+UseCMSCompactAtFullCollection  
 * -XX:+CMSClassUnloadingEnabled
 
 * -XX:+PrintGCDetails
